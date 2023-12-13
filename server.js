@@ -10,11 +10,13 @@ const image = require('./controllers/image');
 const knex = require('knex')({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      port : 5432,
-      user : 'postgres',
-      password : '',
-      database : 'smart-brain'
+      connectionString: process.env.DATABASE_URL,
+      ssl: true
+      // host : '127.0.0.1',
+      // port : 5432,
+      // user : 'postgres',
+      // password : '',
+      // database : 'smart-brain'
     }
   });
 
@@ -39,12 +41,3 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`app is running on port ${port}`);
 })
-
-/**----Rough Idea of Backend server------------------------
- * 
- *  --> res = this is working
- * signin --> POST = success or fail
- * register --> Post = user 
- * profile/:userID --> GET = user 
- * image --> PUT --> user 
- */
