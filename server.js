@@ -13,12 +13,12 @@ const knex = require('knex')({
       connectionString: process.env.DATABASE_URL,
       ssl: {
         rejectUnauthorized: false
-      }
-      // host : '127.0.0.1',
-      // port : 5432,
-      // user : 'postgres',
-      // password : '',
-      // database : 'smart-brain'
+      },
+      host : '127.0.0.1',
+      port : 5432,
+      user : 'postgres',
+      password : '',
+      database : 'smart-brain'
     }
   });
 
