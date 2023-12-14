@@ -7,11 +7,12 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+
 const knex = require('knex')({
     client: 'pg',
     connection: {
       connectionString: process.env.DATABASE_URL,
-      ssl: true
+      ssl: { rejectUnauthorized: false}
       // host : '127.0.0.1',
       // port : 5432,
       // user : 'postgres',
@@ -21,7 +22,9 @@ const knex = require('knex')({
   });
 
 knex.select('*').from('users').then(data => {
-    return data;
+  console.log('Initial database connection successful.'); // Log success for testing
+}).catch(err => {
+    console.error('Error connecting to the database:', err);
 });
 
 const app = express();
